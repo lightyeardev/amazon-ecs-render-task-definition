@@ -82,8 +82,8 @@ async function run() {
 
     if (tags) {
       // If tags array is missing, create it
-      if (!Array.isArray(containerDef.tags)) {
-        containerDef.tags = [];
+      if (!Array.isArray(taskDefContents.tags)) {
+        taskDefContents.tags = [];
       }
 
       // Get pairs by splitting on newlines
@@ -105,13 +105,13 @@ async function run() {
         };
 
         // Search container definition tags for one matching name
-        const tagDef = containerDef.tags.find((e) => e.key === tag.key);
+        const tagDef = taskDefContents.tags.find((e) => e.key === tag.key);
         if (tagDef) {
           // If found, update
           tagDef.value = tag.value;
         } else {
           // Else, create
-          containerDef.tags.push(tag);
+          taskDefContents.tags.push(tag);
         }
       });
     }
